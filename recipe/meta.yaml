@@ -10,16 +10,16 @@ source:
   sha256: a08f33501f7d7b4ffb29855ac5788aa4b81b4f746abd370b1b53f1cc63617d72
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: python -m pip install -v --no-deps .
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - mpmath
     - numpy
     - pint
@@ -31,6 +31,7 @@ test:
 
   requires:
     - pip
+    - python {{ python_min }}
 
   commands:
     - pip check
